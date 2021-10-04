@@ -12,6 +12,7 @@ function AppUI() {
   const {
     error,
     loading,
+    searchValue,
     searchedTodos,
     completeTodo,
     deleteTodo,
@@ -32,9 +33,10 @@ function AppUI() {
       <TodoSearch />
 
       <TodoList>
-        {error && <p>Desespérate, hubo un error...</p>}
-        {loading && <p>Estamos cargando, no desesperes...</p>}
-        {(!loading && !searchedTodos.length) && <p>¡Crea tu primer TODO!</p>}
+        {error && <p>Ocurrió un error. Intente recargar la pagina</p>}
+        {loading && <p>Estamos cargando la lista de tareas...</p>}
+        {((!loading && !searchedTodos.length) && !!searchValue.length) && <p>No hubo coincidencias en la b&uacute;squeda</p>}
+        {(!loading && !searchedTodos.length && !searchValue.length) && <p>¡Crea tu primera Tarea!</p>}
         
         {searchedTodos.map(todo => (
           <TodoItem
