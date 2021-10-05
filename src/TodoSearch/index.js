@@ -10,7 +10,7 @@ function TodoSearch() {
   return (
     <input 
       className="TodoSearch" 
-      placeholder="" 
+      placeholder="escribir aqui para buscar una tarea" 
       value={searchValue}
       onChange={onSearchValueChange}
     />

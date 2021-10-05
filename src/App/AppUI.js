@@ -1,5 +1,7 @@
 import React from 'react';
 import { TodoContext } from '../TodoContext';
+import { TodoLoading } from '../TodoLoading';
+import { TodoHeader } from '../TodoHeader';
 import { TodoCounter } from '../TodoCounter';
 import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
@@ -29,12 +31,13 @@ function AppUI() {
     // de tener que separar cada componente en diferentes funciones
 
     <React.Fragment>
+      <TodoHeader />
       <TodoCounter />
       <TodoSearch />
 
       <TodoList>
         {error && <p>Ocurrió un error. Intente recargar la pagina</p>}
-        {loading && <p>Estamos cargando la lista de tareas...</p>}
+        {loading && <TodoLoading />} 
         {((!loading && !searchedTodos.length) && !!searchValue.length) && <p>No hubo coincidencias en la b&uacute;squeda</p>}
         {(!loading && !searchedTodos.length && !searchValue.length) && <p>¡Crea tu primera Tarea!</p>}
         

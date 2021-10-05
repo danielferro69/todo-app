@@ -23,7 +23,7 @@ function useLocalStorage(itemName, initialValue) {
         } catch(error) {
           setError(error);
         }
-      }, 1000 );
+      }, 2000 );
   } //aqui iria ese segundo parametro como por ejemplo: ,[totalTodos]
   );
   
@@ -36,9 +36,9 @@ function useLocalStorage(itemName, initialValue) {
     }
   }
   return {item, 
-            saveItem,
-            loading,
-            error};
+          saveItem,
+          loading,
+          error};
     
   };
 
