@@ -9,7 +9,7 @@ form {
     flex-direction: column;
 }
 
-label {
+.label-box {
     text-align: center;
     font-weight: bold;
     font-size: 22px;
@@ -17,7 +17,42 @@ label {
     margin-bottom: 26px;
 }
 
+.label-input {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: #1E1E1F;
+    margin-bottom: 18px;
+}
+
+
+input {
+    font-family: 'Montserrat';
+    background-color: #f9fbfc;
+    border: 2px solid #202329;
+    border-radius: 2px;
+    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.25);
+    color:#1E1E1F;
+    font-size: 16px;
+    text-align: center;
+    padding: 12px;
+    height: 32px;
+    width: calc(100% - 25px);
+}
+
+input::placeholder {
+    color: #a5a5a5;
+    font-family: 'Montserrat';
+    font-weight: 400;
+}
+
+input:focus {
+    outline-color: #61DAFA;
+}
+
+
 textarea {
+    font-family: 'Montserrat';
     background-color: #f9fbfc;
     border: 2px solid #202329;
     border-radius: 2px;

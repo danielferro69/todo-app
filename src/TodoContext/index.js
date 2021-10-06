@@ -24,7 +24,7 @@ function TodoProvider(props) {
       } else {
         searchedTodos = todos.filter( todo => {
           const searchText = searchValue.toLowerCase();
-          const todoText = todo.text.toLowerCase();
+          const todoText = todo.text.toLowerCase() + todo.date.toLowerCase() + todo.time.toLowerCase();
           return todoText.includes(searchText);
         });
       }
@@ -36,10 +36,12 @@ function TodoProvider(props) {
         saveTodos(newTodos);
       };
     
-      const addTodo = (text) => {
+      const addTodo = (text, date) => {
         const newTodos = [...todos];
         newTodos.push({
             completed: false,
+            date,
+            //time,
             text,
         })
         saveTodos(newTodos);

@@ -5,7 +5,11 @@
   border-radius: 50%;
   cursor: pointer;
   font-size: 50px;
-  position: sticky;
+  position: fixed; /*sticky;*/
+  left: 50%;
+  left: calc(50% - 30px);
+  bottom: 24px;
+
   font-weight: bold;
   color: #FAFAFA;
   display: flex;
@@ -16,7 +20,7 @@
   margin: 0px auto;
   transform: rotate(0);
   transition: .3s ease;
-  z-index:1; 
+  /*z-index:1; */
   /* esto permite que siempre esté visible*/
 }
 

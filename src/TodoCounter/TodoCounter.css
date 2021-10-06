@@ -2,5 +2,6 @@
   font-size: 18px;
   text-align: right;
   margin: calc(100%-30px);
-  padding: 24px;
+  padding: 5px;
+  font-weight: bold;
 }

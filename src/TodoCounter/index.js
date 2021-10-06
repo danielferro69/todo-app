@@ -5,7 +5,7 @@ import './TodoCounter.css';
 function TodoCounter() {
     const {totalTodos, completedTodos} = React.useContext(TodoContext);
     return ( 
-        <span><p className="TodoCounter">{completedTodos} de {totalTodos} Tareas Realizadas</p></span>
+        <p className="TodoCounter">Tareas Realizadas {completedTodos} de {totalTodos}</p>
     );
 }
 

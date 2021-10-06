@@ -2,10 +2,10 @@
   background: #F9FBFC;
   border-radius: 2px;
   border: 2px solid #202329;
-  margin: 0 24px;
-  height: 64px;
-  width: calc(100% - 62px);
-  font-size: 24px;
+  margin: 0 12px;
+  height: 24px;
+  width: calc(100% - 60px);
+  font-size: 18px;
   text-align: center;
   font-family: 'Montserrat';
   font-weight: 400;

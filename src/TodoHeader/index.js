@@ -4,7 +4,10 @@ import './TodoHeader.css';
 
 function TodoHeader() {
     return (
+        <h2 className="Content">
         <img className="TodoLogo" src={TODOLogo} alt='todo-logo' />
+        Lista de Tareas
+        </h2>
     );
 }
 
