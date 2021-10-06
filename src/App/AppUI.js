@@ -39,7 +39,7 @@ function AppUI() {
         {error && <p>Ocurrió un error. Intente recargar la pagina</p>}
         {loading && <TodoLoading />} 
         {((!loading && !searchedTodos.length) && !!searchValue.length) && <p>No hubo coincidencias en la b&uacute;squeda</p>}
-        {(!loading && !searchedTodos.length && !searchValue.length) && <p>¡Crea tu primera Tarea!</p>}
+        {(!loading && !searchedTodos.length && !searchValue.length) && <p>Cree su primera Tarea</p>}
         
         {searchedTodos.map(todo => (
           <TodoItem
