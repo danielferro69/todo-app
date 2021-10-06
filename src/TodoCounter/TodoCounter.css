@@ -3,5 +3,6 @@
   text-align: right;
   margin: calc(100%-30px);
   padding: 5px;
+  line-height: 24px;
   font-weight: bold;
 }
