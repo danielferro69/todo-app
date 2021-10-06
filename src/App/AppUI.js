@@ -9,6 +9,9 @@ import { TodoItem } from '../TodoItem';
 import { TodoForm } from '../TodoForm';
 import { CreateTodoButton } from '../CreateTodoButton';
 import { Modal } from '../Modal';
+import './AppUI.css';
+
+ 
 
 function AppUI() {
   const {
@@ -18,10 +21,27 @@ function AppUI() {
     searchedTodos,
     completeTodo,
     deleteTodo,
+    setTextTodo,
+    setDateTodo,
     openModal,
     setOpenModal,
   } = React.useContext(TodoContext);
-  
+
+  function modifyTodo(todoT, todoD) {
+   
+      setOpenModal(prevState => !prevState);
+      setTextTodo(todoT);
+      setDateTodo(todoD);
+      /*
+      return (!!openModal && (
+                <Modal>
+                  <TodoForm />             
+                </Modal>
+                )
+      );
+  */
+  }
+
   return (
     // cuando necesitamos enviar varios componentes dentro de un mismo render
     // como react requiere que vayan dentro de un unico
@@ -38,30 +58,34 @@ function AppUI() {
       <TodoList>
         {error && <p>Ocurrió un error. Intente recargar la pagina</p>}
         {loading && <TodoLoading />} 
-        {((!loading && !searchedTodos.length) && !!searchValue.length) && <p>No hubo coincidencias en la b&uacute;squeda</p>}
-        {(!loading && !searchedTodos.length && !searchValue.length) && <p>Cree su primera Tarea</p>}
+        {((!loading && !searchedTodos.length) && !!searchValue.length) && <p className="msgList">No hubo coincidencias en la b&uacute;squeda</p>}
+        {(!loading && !searchedTodos.length && !searchValue.length) && <p className="msgList">Cree su primera Tarea</p>}
         
         {searchedTodos.map(todo => (
           <TodoItem
             key={todo.text}
             text={todo.text}
-            date={todo.date}
-            time={todo.time}
+            date={todo.date}            
             completed={todo.completed}
             onComplete={() => completeTodo(todo.text)}
             onDelete={() => deleteTodo(todo.text)}
+            onEdit={() => modifyTodo(todo.text, todo.date)}
           />
         ))}
       </TodoList>
-
-      {!!openModal && (
+      
+      {!!openModal &&
+       (
         <Modal>
-            <TodoForm />
+            <TodoForm 
+            />
         </Modal>
       )}
 
       <CreateTodoButton
         setOpenModal={setOpenModal}
+        setTextTodo={setTextTodo}
+        setDateTodo={setDateTodo}
       />
     </React.Fragment>
   );

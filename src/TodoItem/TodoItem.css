@@ -9,6 +9,7 @@
 }
 
 .TodoItem-p {
+  cursor: pointer;
   margin: 12px 36px 12px 12px;
   width: calc(100% - 20px);
   font-size: 18px;
@@ -20,6 +21,7 @@
 }
 
 .TodoItem-d {
+  cursor: pointer;
   margin: 12px 0 12px 12px;
   width: 100px;
   font-size: 18px;

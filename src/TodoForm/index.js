@@ -3,15 +3,18 @@ import { TodoContext } from '../TodoContext';
 import './TodoForm.css';
 import { formatDateTime } from '../utils';
 
-
 function TodoForm() {
-    const today=formatDateTime(new Date(), 'T');
-    const [newTodoValue, setNewTodoValue] = React.useState('');
-    const [newDateTodoValue, setNewDateTodoValue] = React.useState(formatDateTime(new Date(), 'T'));
     const {
         addTodo,
+        editTodo,
+        textTodo,
+        dateTodo,
         setOpenModal,
     } = React.useContext(TodoContext);
+    const today=(!dateTodo ? formatDateTime(new Date(), 'T'):dateTodo);
+    const [newTodoValue, setNewTodoValue] = React.useState(textTodo);
+    const [newDateTodoValue, setNewDateTodoValue] = React.useState((!dateTodo ? formatDateTime(new Date(), 'T'):dateTodo));
+    
     const onCancel = () => {
         setOpenModal(false);
     };
@@ -24,12 +27,16 @@ function TodoForm() {
     }
     const onSubmit = (event) => {
         event.preventDefault(); // evita que se recargue la pagina que es algo que el submit hace por default
-        addTodo(newTodoValue, newDateTodoValue);
+        if (!textTodo){
+            addTodo(newTodoValue, newDateTodoValue);
+        } else {
+            editTodo(textTodo, newTodoValue, newDateTodoValue);
+        }        
         setOpenModal(false);
     };
     return (
         <form onSubmit={onSubmit}>
-            <label className="label-box">Nueva Tarea</label>
+            <label className="label-box">{!textTodo ? "Nueva Tarea" : "Modificar Tarea"}</label>
             <label className="label-input">Tarea 
             <textarea
             value={newTodoValue}
@@ -56,11 +63,12 @@ function TodoForm() {
                     type="submit"
                     
                     className="TodoForm-button TodoForm-button--add">
-                    Agregar
+                    {!textTodo ? "Agregar" : "Modificar"}
                 </button>
             </div>
         </form>
     );
 }
+
 
 export { TodoForm };

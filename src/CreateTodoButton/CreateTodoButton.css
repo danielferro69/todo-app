@@ -20,8 +20,7 @@
   margin: 0px auto;
   transform: rotate(0);
   transition: .3s ease;
-  /*z-index:1; */
-  /* esto permite que siempre esté visible*/
+  /*z-index:1; */  /* esto permite que siempre esté visible*/
 }
 
 .CreateTodoButton:hover {

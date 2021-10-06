@@ -3,7 +3,10 @@ import './CreateTodoButton.css';
 
 function CreateTodoButton(props) {
   const onClickButton = () => {
-    props.setOpenModal(prevState => !prevState) 
+    props.setOpenModal(prevState => !prevState)
+    props.setTextTodo('');
+    props.setDateTodo('');
+
                          // esto permite enviar como funcion 
                          // su estado previo,
                          // le devolvemos la negacion de ese estado anterior.

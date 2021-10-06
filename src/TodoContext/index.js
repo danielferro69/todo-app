@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocalStorage } from './useLocalStorage';
+import { formatDateTime } from '../utils';
 
 const TodoContext = React.createContext();
 
@@ -8,8 +9,11 @@ function TodoProvider(props) {
         item: todos, 
         saveItem: saveTodos,
         loading,
-        error
+        error,
         } = useLocalStorage('TODOS_V1', []);
+
+      const [textTodo, setTextTodo] = React.useState('');
+      const [dateTodo, setDateTodo] = React.useState(formatDateTime(new Date(),'T'));
       const [searchValue, setSearchValue] = React.useState('');
       const [openModal, setOpenModal] = React.useState(false);
                                       // esto es todo.completed == true es el ! del !
@@ -24,7 +28,7 @@ function TodoProvider(props) {
       } else {
         searchedTodos = todos.filter( todo => {
           const searchText = searchValue.toLowerCase();
-          const todoText = todo.text.toLowerCase() + todo.date.toLowerCase() + todo.time.toLowerCase();
+          const todoText = todo.text.toLowerCase() + todo.date.toLowerCase();
           return todoText.includes(searchText);
         });
       }
@@ -32,16 +36,24 @@ function TodoProvider(props) {
       const completeTodo = (text) => {
         const todoIndex = todos.findIndex(todo => todo.text === text);
         const newTodos = [...todos];
-        newTodos[todoIndex].completed = true;
+        newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
         saveTodos(newTodos);
       };
-    
+   
+      const editTodo = (oldText, newText, newDate) => {
+        const todoIndex = todos.findIndex(todo => todo.text === oldText);
+        const newTodos = [...todos];
+        newTodos[todoIndex].completed = false;
+        newTodos[todoIndex].text = newText;
+        newTodos[todoIndex].date = newDate;
+        saveTodos(newTodos);
+      };
+      
       const addTodo = (text, date) => {
         const newTodos = [...todos];
         newTodos.push({
             completed: false,
             date,
-            //time,
             text,
         })
         saveTodos(newTodos);
@@ -64,6 +76,11 @@ function TodoProvider(props) {
         setSearchValue,
         searchedTodos,
         addTodo,
+        editTodo,
+        textTodo,
+        setTextTodo,
+        dateTodo,
+        setDateTodo,
         completeTodo,
         deleteTodo,
         openModal,

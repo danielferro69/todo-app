@@ -1,5 +1,4 @@
 .TodoLogo {
-    /*display: flex;*/
     width: 50px;
     padding: 20px;
 }
@@ -8,6 +7,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /*margin: auto 0;*/
 }
 

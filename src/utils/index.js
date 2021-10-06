@@ -1,5 +1,5 @@
 
-function formatDateTime(date, union) {
+function formatDateTime(date, union, format='Y') {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
@@ -15,6 +15,12 @@ function formatDateTime(date, union) {
         hour = '0' + hour;
   if (min.length < 2) 
         min = '0' + min;
+    if ( format === 'D' ) {
+        return [day, month, year].join('-') + union + [hour, min].join(':');
+    }
+    if ( format === 'M' ) {
+        return [month, day, year].join('-') + union + [hour, min].join(':');
+    }
     return [year, month, day].join('-') + union + [hour, min].join(':');
   }
 

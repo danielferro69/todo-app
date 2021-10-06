@@ -4,7 +4,7 @@ import { formatDateTime } from '../utils';
 
 function TodoItem(props) {
   const showDate = new Date(props.date);
-  const showDateText = formatDateTime(showDate, ' ');
+  const showDateText = formatDateTime(showDate, ' ', 'D');
   
   
   return (
@@ -15,12 +15,15 @@ function TodoItem(props) {
         √
       </span>
       <span>
-      <p className={`TodoItem-d ${props.completed && 'TodoItem-d--complete'}`}>
+      <p className={`TodoItem-d ${props.completed && 'TodoItem-d--complete'}`}
+      onClick={props.onEdit}>
         {showDateText}
       </p>
       </span>
-      <p className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}>
-        {props.text}
+      <p className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}
+      onClick={props.onEdit}
+      >
+        {props.text} 
       </p>
       <span className="Icon Icon-delete"
       onClick={props.onDelete}
