@@ -4,6 +4,7 @@ import { formatDateTime } from '../utils';
 
 function TodoItem(props) {
   const showDate = new Date(props.date);
+  
   const showDateText = formatDateTime(showDate, ' ', 'D');
   
   

@@ -50,6 +50,8 @@ function TodoProvider(props) {
       };
       
       const addTodo = (text, date) => {
+        console.log(text);
+        console.log(date);
         const newTodos = [...todos];
         newTodos.push({
             completed: false,
